@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FarmAgent · Agave PPE &amp; Safety Automation</title>
+<meta name="description" content="FarmAgent — Computer Vision-powered PPE compliance and STPS safety automation for agave growers.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;600;700&family=Work+Sans:wght@300;400;600&display=swap');
+:root{--void:#080E14;--surface:#0D1A26;--raised:#132233;--border:#1E3347;--blue:#006EA7;--blue-b:#0A8FD4;--green:#A4CA67;--green-d:#6E9944;--gold:#D2A844;--tp:#EAF2F8;--ts:#A8BDD0;--tm:#4A6278;--red:#D25444;--amber:#D2A844;--ftitle:'Raleway',sans-serif;--fbody:'Work Sans',sans-serif;}
+.reveal{background:var(--void);}
+.reveal .slides{font-family:var(--fbody);color:var(--tp);}
+.reveal .slides section{height:100%;box-sizing:border-box;}
+.slide-inner{width:100%;height:100%;display:flex;flex-direction:column;justify-content:center;padding:52px 68px 68px;box-sizing:border-box;position:relative;overflow:hidden;}
+.glow-orb::before{content:'';position:absolute;top:-60px;right:-60px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(0,110,167,.18) 0%,transparent 65%);pointer-events:none;}
+.cover-bg{position:absolute;inset:0;background-size:cover;background-position:center;}
+.cover-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(8,14,20,.86) 38%,rgba(0,110,167,.26) 100%);}
+.cover-content{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:center;height:100%;padding:52px 68px;box-sizing:border-box;}
+.cover-tag{font-family:var(--ftitle);font-weight:300;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--green);margin-bottom:24px;}
+.cover-headline{font-family:var(--ftitle);font-weight:200;font-size:60px;line-height:1.18;color:var(--tp);margin:0 0 8px;}
+.cover-rule{width:70px;height:2px;background:var(--green);margin:18px 0 22px;}
+.cover-sub{font-family:var(--fbody);font-size:17px;color:var(--ts);max-width:580px;line-height:1.65;}
+.cover-footer{position:absolute;bottom:32px;left:68px;right:68px;display:flex;justify-content:space-between;align-items:center;z-index:2;}
+.cover-footer-logo{font-family:var(--ftitle);font-weight:700;font-size:17px;color:var(--blue-b);letter-spacing:.06em;}
+.cover-footer-conf{font-family:var(--fbody);font-size:12px;color:var(--tm);}
+.two-col{display:grid;grid-template-columns:55% 45%;gap:44px;height:100%;align-items:center;}
+.col-visual img{width:100%;border-radius:12px;border:1px solid var(--border);box-shadow:0 0 40px rgba(0,110,167,.22);}
+.slide-tag{display:inline-block;font-family:var(--fbody);font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--green);background:var(--surface);border:1px solid var(--blue);padding:5px 13px;border-radius:999px;margin-bottom:14px;}
+.slide-h1{font-family:var(--ftitle);font-weight:700;font-size:32px;color:var(--tp);line-height:1.25;margin:0 0 10px;}
+.slide-rule{width:56px;height:2px;background:var(--gold);margin-bottom:18px;}
+.slide-body{font-family:var(--fbody);font-size:15px;color:var(--ts);line-height:1.65;}
+.slide-body p{margin:0 0 10px;}.slide-body strong{color:var(--tp);}.slide-body em{color:var(--green);font-style:normal;}
+.bullet-list{list-style:none;margin:10px 0;padding:0;}
+.bullet-list li{padding:5px 0 5px 20px;position:relative;font-size:14px;color:var(--ts);line-height:1.5;}
+.bullet-list li::before{content:"■";position:absolute;left:0;color:var(--green);font-size:8px;top:9px;}
+.bullet-list li strong{color:var(--tp);}
+.callout{border-left:3px solid var(--gold);padding:12px 16px;background:var(--surface);border-radius:0 8px 8px 0;margin-top:14px;font-size:14px;color:var(--ts);line-height:1.6;}
+.callout strong{color:var(--gold);}
+.callout-green{border-left:3px solid var(--green);padding:12px 16px;background:var(--surface);border-radius:0 8px 8px 0;margin-top:14px;font-size:14px;color:var(--ts);line-height:1.6;}
+.callout-green strong{color:var(--green);}
+/* hazard grid */
+.hazard-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px;}
+.hazard-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 16px;}
+.hazard-card-icon{font-size:20px;margin-bottom:6px;}
+.hazard-card-title{font-family:var(--ftitle);font-weight:700;font-size:14px;color:var(--tp);margin-bottom:4px;}
+.hazard-card-desc{font-family:var(--fbody);font-size:12px;color:var(--ts);line-height:1.5;}
+/* ppe check row */
+.ppe-row{display:flex;align-items:center;gap:12px;padding:8px 12px;background:var(--surface);border:1px solid var(--border);border-radius:8px;margin-bottom:6px;}
+.ppe-icon{font-size:16px;flex-shrink:0;}
+.ppe-lbl{font-family:var(--fbody);font-size:13px;color:var(--tp);font-weight:600;}
+.ppe-status{margin-left:auto;font-family:var(--fbody);font-size:12px;font-weight:600;color:var(--green);}
+.ppe-status.fail{color:var(--red);}
+/* capability table */
+.cap-table{width:100%;border-collapse:collapse;margin-top:16px;font-family:var(--fbody);font-size:13px;}
+.cap-table th{background:var(--raised);color:var(--blue-b);font-weight:600;letter-spacing:.08em;padding:8px 12px;text-align:left;border-bottom:1px solid var(--border);}
+.cap-table td{padding:8px 12px;border-bottom:1px solid rgba(30,51,71,.6);color:var(--ts);vertical-align:top;}
+.cap-table td:first-child{color:var(--tp);font-weight:600;}
+.cap-table tr:last-child td{border-bottom:none;}
+/* slide footer */
+.slide-footer{position:absolute;bottom:18px;left:68px;right:68px;display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--tm);border-top:1px solid var(--border);padding-top:8px;}
+.slide-footer-logo{font-family:var(--ftitle);font-weight:700;font-size:12px;color:var(--blue-b);}
+/* lang badge */
+#lang-badge{position:fixed;top:14px;right:14px;z-index:9999;background:rgba(13,26,38,.92);border:1px solid var(--border);border-radius:999px;padding:6px 14px;display:flex;gap:8px;align-items:center;font-family:var(--ftitle);font-size:13px;font-weight:600;letter-spacing:.08em;backdrop-filter:blur(8px);}
+#lang-badge a{text-decoration:none;padding:2px 6px;border-radius:4px;transition:all .2s;}
+#lang-badge .active{color:var(--green);background:rgba(164,202,103,.14);}
+#lang-badge .inactive{color:var(--tm);}
+#lang-badge .sep{color:var(--border);}
+.reveal h1,.reveal h2,.reveal h3,.reveal h4{all:unset;display:block;font-family:var(--ftitle);text-transform:none;}
+.reveal .progress{background:rgba(0,110,167,.2);}.reveal .progress span{background:var(--green);}
+.reveal .controls button{color:var(--blue);}
+</style>
+</head>
+<body>
+<div id="lang-badge"><a href="index.html" class="active">EN</a><span class="sep">|</span><a href="es/index.html" class="inactive">ES</a></div>
+<div class="reveal">
+  <div class="slides">
+
+<!-- SLIDE 1: COVER -->
+<section>
+<div style="position:relative;width:100%;height:100%;">
+  <div class="cover-bg" style="background-image:url('assets/cover.png')"></div>
+  <div class="cover-content">
+    <div class="cover-tag">FarmAgent · Agave Edition &nbsp;·&nbsp; Worker Safety</div>
+    <div class="cover-headline">PPE &amp; Safety<br>Compliance<br><em style="color:var(--green);font-style:normal;">Automated.</em></div>
+    <div class="cover-rule"></div>
+    <p class="cover-sub">How FarmAgent creates an unbreakable, auditable chain of custody for PPE compliance — protecting jimadors, satisfying STPS inspectors, and securing distillery ESG contracts.</p>
+  </div>
+  <div class="cover-footer">
+    <span class="cover-footer-logo">FarmAgent</span>
+    <span class="cover-footer-conf">FruitScout · Confidential · For CRT Review</span>
+  </div>
+</div></section>
+
+<!-- SLIDE 2: THE HAZARDS -->
+<section>
+<div class="slide-inner glow-orb">
+  <div class="two-col">
+    <div class="col-text">
+      <div class="slide-tag">The Risk</div>
+      <div class="slide-h1">The Agave Field Is One of Agriculture's Most Dangerous Workplaces.</div>
+      <div class="slide-rule"></div>
+      <div class="slide-body">
+        <div class="hazard-grid">
+          <div class="hazard-card">
+            <div class="hazard-card-icon">⚔️</div>
+            <div class="hazard-card-title">Coa de Jima</div>
+            <div class="hazard-card-desc">Razor-sharp harvesting blade. Slipped coas cause severe lower-leg and foot lacerations.</div>
+          </div>
+          <div class="hazard-card">
+            <div class="hazard-card-icon">🌵</div>
+            <div class="hazard-card-title">Spines &amp; Sap</div>
+            <div class="hazard-card-desc">Needle-like terminal spines. Highly acidic sap causes severe contact dermatitis and eye injury.</div>
+          </div>
+          <div class="hazard-card">
+            <div class="hazard-card-icon">☠️</div>
+            <div class="hazard-card-title">Agrochemicals</div>
+            <div class="hazard-card-desc">Lethal-dose pesticides require full respiratory and dermal protection. Field poisoning is a top grower liability.</div>
+          </div>
+          <div class="hazard-card">
+            <div class="hazard-card-icon">☀️</div>
+            <div class="hazard-card-title">Heat Stress</div>
+            <div class="hazard-card-desc">8-hour harvest shifts in full sun. Heat exhaustion is a significant and underreported risk.</div>
+          </div>
+        </div>
+        <div class="callout" style="margin-top:12px;"><strong>Grower's risk:</strong> STPS fine + work stoppage. Worse: a single failed ESG audit can get a grower <strong>blacklisted by their distillery buyer.</strong></div>
+      </div>
+    </div>
+    <div class="col-visual"><img src="assets/cover.png" alt="Jimador in agave field"></div>
+  </div>
+  <div class="slide-footer"><span class="slide-footer-logo">FarmAgent</span><span>FruitScout &nbsp;·&nbsp; 2 / 7</span></div>
+</div></section>
+
+<!-- SLIDE 3: DAILY CREW GATE CHECK -->
+<section>
+<div class="slide-inner glow-orb">
+  <div class="two-col">
+    <div class="col-text">
+      <div class="slide-tag">Stage 1 · Daily Crew Gate Verification</div>
+      <div class="slide-h1">10-Second Video Pan. Zero Pencil-Whipping.</div>
+      <div class="slide-rule"></div>
+      <div class="slide-body">
+        <p><strong>Today:</strong> The Cabo is supposed to check every worker as they step off the truck. In reality, workers remove hot, uncomfortable gear the moment the foreman turns away. Documentation is a checkbox on a dirty clipboard.</p>
+        <p><strong>FarmAgent:</strong> Before a worker can clock into the harvest shift, the Cabo records a 10-second smartphone video pan of the crew. FarmAgent verifies every worker is wearing:</p>
+        <div class="ppe-row"><span class="ppe-icon">🥾</span><span class="ppe-lbl">Steel-Toe Boots</span><span class="ppe-status">✅ DETECTED</span></div>
+        <div class="ppe-row"><span class="ppe-icon">🦵</span><span class="ppe-lbl">Shin Guards (Polainas)</span><span class="ppe-status">✅ DETECTED</span></div>
+        <div class="ppe-row"><span class="ppe-icon">🧤</span><span class="ppe-lbl">Leather Gloves</span><span class="ppe-status">✅ DETECTED</span></div>
+        <div class="ppe-row"><span class="ppe-icon">👓</span><span class="ppe-lbl">Eye Protection</span><span class="ppe-status fail">❌ MISSING — Worker Flagged</span></div>
+        <div class="callout-green" style="margin-top:10px;">Worker cannot clock in until the gear is corrected and a passing photo is captured. <strong>Fully automated. Fully auditable.</strong></div>
+      </div>
+    </div>
+    <div class="col-visual"><img src="assets/apple_ppe_check.png" alt="FieldAgent PPE check"></div>
+  </div>
+  <div class="slide-footer"><span class="slide-footer-logo">FarmAgent</span><span>FruitScout &nbsp;·&nbsp; 3 / 7</span></div>
+</div></section>
+
+<!-- SLIDE 4: PLATFORM PROOF (APPLE) -->
+<section>
+<div class="slide-inner glow-orb">
+  <div class="two-col">
+    <div class="col-text">
+      <div class="slide-tag">Platform Proof · Live in Apple Orchards</div>
+      <div class="slide-h1">This Is a Running Platform — Not a Prototype.</div>
+      <div class="slide-rule"></div>
+      <div class="slide-body">
+        <p>FruitScout's PPE verification is deployed and operational in multiple crop contexts. The image shows <strong>FieldAgent's PPE Compliance Check — Spraying</strong> in use by a chemical applicator in an apple orchard.</p>
+        <ul class="bullet-list">
+          <li>Worker in full Tyvek suit takes a selfie before beginning spray operation</li>
+          <li>CV model verifies <strong>Respirator: DETECTED ✅</strong> and <strong>Goggles: DETECTED ✅</strong></li>
+          <li>Hard-gate blocks spray timer until the check passes — same mechanic as the agave crew gate</li>
+        </ul>
+        <div class="callout">Adapting this for agave PPE classifications — polainas, leather gloves, steel-toe boots — is a <strong>model training configuration, not a new product build.</strong> The infrastructure is proven and running.</div>
+      </div>
+    </div>
+    <div class="col-visual"><img src="assets/apple_ppe_check.png" alt="Apple orchard PPE selfie check"></div>
+  </div>
+  <div class="slide-footer"><span class="slide-footer-logo">FarmAgent</span><span>FruitScout &nbsp;·&nbsp; 4 / 7</span></div>
+</div></section>
+
+<!-- SLIDE 5: CHEMICAL + DRONE MONITORING -->
+<section>
+<div class="slide-inner glow-orb">
+  <div class="two-col">
+    <div class="col-text">
+      <div class="slide-tag">Stages 2 &amp; 3 · Chemical Safety Lock &amp; Drone Monitoring</div>
+      <div class="slide-h1">Every Spray Gated. Every Shift Monitored.</div>
+      <div class="slide-rule"></div>
+      <div class="slide-body">
+        <p style="font-size:12px;color:var(--green);font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px;">Chemical Application Safety Lock</p>
+        <ul class="bullet-list">
+          <li>Applicator scans chemical barcode before mixing. <strong>Label OCR</strong> retrieves exact PPE requirements from COFEPRIS database.</li>
+          <li>Worker takes a selfie. CV hard-gate verifies against the <em>specific</em> PPE demanded by that chemical — cloth mask vs. dual-cartridge respirator is caught every time.</li>
+          <li>System physically blocks "Start Application" timer and alerts agronomist if check fails.</li>
+        </ul>
+        <p style="font-size:12px;color:var(--amber);font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin:10px 0 6px;">Autonomous Mid-Shift Monitoring</p>
+        <ul class="bullet-list">
+          <li>While the drone flies routine inventory or phytosanitary scans, it <strong>automatically runs the PPE model</strong> on any workers captured in frame.</li>
+          <li>GPS-tagged violation heatmap — "Worker without Eye Protection at Row 47, Sector B3."</li>
+          <li><strong>Weekly Safety Score</strong> per crew — tied to production bonuses, turning compliance into an incentive.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-visual"><img src="assets/cover.png" alt="Safety coverage"></div>
+  </div>
+  <div class="slide-footer"><span class="slide-footer-logo">FarmAgent</span><span>FruitScout &nbsp;·&nbsp; 5 / 7</span></div>
+</div></section>
+
+<!-- SLIDE 6: STPS AUDIT READINESS -->
+<section>
+<div class="slide-inner glow-orb">
+  <div class="two-col">
+    <div class="col-text">
+      <div class="slide-tag">Stage 4 · STPS &amp; ESG Audit Readiness</div>
+      <div class="slide-h1">Inspector Arrives Unannounced. Zero Scramble.</div>
+      <div class="slide-rule"></div>
+      <div class="slide-body">
+        <p><strong>Today:</strong> The farm manager spends 3 hours digging through filing cabinets. Signed safety briefing sheets. Daily check logs. Hoping nothing is missing.</p>
+        <p style="font-size:12px;color:var(--green);font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin:10px 0 6px;">FarmAgent Zero-Stress Audit</p>
+        <table class="cap-table">
+          <tr><th>Tool</th><th>What the Inspector Gets</th></tr>
+          <tr><td>Live Compliance Dashboard</td><td>Real-time: 14 crews active, 100% PPE verified, 2 sprayers geared — at this moment</td></tr>
+          <tr><td>Automated STPS Report</td><td>Legally defensible PDF: every daily video verification cross-referenced with worker manifest, proving NOM-017-STPS compliance</td></tr>
+          <tr><td>Distillery ESG Export</td><td>Read-only portal link shared with Patrón, Herradura, or Cuervo auditor — full ethical sourcing proof, instant</td></tr>
+        </table>
+        <div class="callout" style="margin-top:12px;">Tequila is watched by the world. FarmAgent proves your workers are protected <strong>every single day</strong> — with the photos to back it up.</div>
+      </div>
+    </div>
+    <div class="col-visual"><img src="assets/apple_ppe_check.png" alt="Safety platform"></div>
+  </div>
+  <div class="slide-footer"><span class="slide-footer-logo">FarmAgent</span><span>FruitScout &nbsp;·&nbsp; 6 / 7</span></div>
+</div></section>
+
+<!-- SLIDE 7: CLOSING -->
+<section>
+<div style="position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center;text-align:center;">
+  <div class="cover-bg" style="background-image:url('assets/closing.png')"></div>
+  <div style="position:absolute;inset:0;background:rgba(8,14,20,.80);"></div>
+  <div style="position:relative;z-index:2;padding:48px;max-width:760px;">
+    <div style="font-family:var(--ftitle);font-weight:200;font-size:52px;color:var(--tp);line-height:1.25;margin-bottom:18px;">
+      Every worker, protected.<br>Every shift, <em style="color:var(--green);font-style:normal;">documented.</em>
+    </div>
+    <div class="cover-rule" style="margin:0 auto 24px;"></div>
+    <p style="font-family:var(--fbody);font-size:16px;color:var(--ts);line-height:1.7;max-width:580px;margin:0 auto;">
+      You can't afford a safety incident. You can't afford to lose your distillery contract over a failed ESG audit.<br><br>
+      <strong style="color:var(--tp);">FarmAgent makes safety compliance automatic, invisible, and permanently provable — before a single coa hits a piña.</strong>
+    </p>
+    <div style="margin-top:32px;font-family:var(--ftitle);font-weight:700;font-size:17px;color:var(--blue-b);">FarmAgent · FruitScout</div>
+  </div>
+</div></section>
+
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script>
+Reveal.initialize({
+  hash: true, transition: 'fade', transitionSpeed: 'default',
+  backgroundTransition: 'fade', progress: true, controls: true,
+  slideNumber: false, center: false, disableLayout: true, margin: 0,
+});
+</script>
+</body>
+</html>

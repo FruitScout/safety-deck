@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FarmAgent · Automatización de Seguridad y EPP en Agave</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;600;700&family=Work+Sans:wght@300;400;600&display=swap');
+:root{--void:#080E14;--surface:#0D1A26;--raised:#132233;--border:#1E3347;--blue:#006EA7;--blue-b:#0A8FD4;--green:#A4CA67;--gold:#D2A844;--tp:#EAF2F8;--ts:#A8BDD0;--tm:#4A6278;--red:#D25444;--amber:#D2A844;--ftitle:'Raleway',sans-serif;--fbody:'Work Sans',sans-serif;}
+.reveal{background:var(--void);}.reveal .slides{font-family:var(--fbody);color:var(--tp);}.reveal .slides section{height:100%;box-sizing:border-box;}
+.slide-inner{width:100%;height:100%;display:flex;flex-direction:column;justify-content:center;padding:52px 68px 68px;box-sizing:border-box;position:relative;overflow:hidden;}
+.glow-orb::before{content:'';position:absolute;top:-60px;right:-60px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(0,110,167,.18) 0%,transparent 65%);pointer-events:none;}
+.cover-bg{position:absolute;inset:0;background-size:cover;background-position:center;}.cover-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(8,14,20,.86) 38%,rgba(0,110,167,.26) 100%);}
+.cover-content{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:center;height:100%;padding:52px 68px;box-sizing:border-box;}
+.cover-tag{font-family:var(--ftitle);font-weight:300;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--green);margin-bottom:24px;}
+.cover-headline{font-family:var(--ftitle);font-weight:200;font-size:60px;line-height:1.18;color:var(--tp);margin:0 0 8px;}
+.cover-rule{width:70px;height:2px;background:var(--green);margin:18px 0 22px;}
+.cover-sub{font-family:var(--fbody);font-size:17px;color:var(--ts);max-width:580px;line-height:1.65;}
+.cover-footer{position:absolute;bottom:32px;left:68px;right:68px;display:flex;justify-content:space-between;align-items:center;z-index:2;}
+.cover-footer-logo{font-family:var(--ftitle);font-weight:700;font-size:17px;color:var(--blue-b);}
+.cover-footer-conf{font-family:var(--fbody);font-size:12px;color:var(--tm);}
+.two-col{display:grid;grid-template-columns:55% 45%;gap:44px;height:100%;align-items:center;}
+.col-visual img{width:100%;border-radius:12px;border:1px solid var(--border);box-shadow:0 0 40px rgba(0,110,167,.22);}
+.slide-tag{display:inline-block;font-family:var(--fbody);font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--green);background:var(--surface);border:1px solid var(--blue);padding:5px 13px;border-radius:999px;margin-bottom:14px;}
+.slide-h1{font-family:var(--ftitle);font-weight:700;font-size:32px;color:var(--tp);line-height:1.25;margin:0 0 10px;}
+.slide-rule{width:56px;height:2px;background:var(--gold);margin-bottom:18px;}
+.slide-body{font-family:var(--fbody);font-size:15px;color:var(--ts);line-height:1.65;}
+.slide-body p{margin:0 0 10px;}.slide-body strong{color:var(--tp);}
+.bullet-list{list-style:none;margin:10px 0;padding:0;}
+.bullet-list li{padding:5px 0 5px 20px;position:relative;font-size:14px;color:var(--ts);line-height:1.5;}
+.bullet-list li::before{content:"■";position:absolute;left:0;color:var(--green);font-size:8px;top:9px;}
+.bullet-list li strong{color:var(--tp);}
+.callout{border-left:3px solid var(--gold);padding:12px 16px;background:var(--surface);border-radius:0 8px 8px 0;margin-top:14px;font-size:14px;color:var(--ts);line-height:1.6;}.callout strong{color:var(--gold);}
+.callout-green{border-left:3px solid var(--green);padding:12px 16px;background:var(--surface);border-radius:0 8px 8px 0;margin-top:14px;font-size:14px;color:var(--ts);line-height:1.6;}.callout-green strong{color:var(--green);}
+.hazard-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px;}
+.hazard-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 16px;}
+.hazard-card-icon{font-size:20px;margin-bottom:6px;}.hazard-card-title{font-family:var(--ftitle);font-weight:700;font-size:14px;color:var(--tp);margin-bottom:4px;}
+.hazard-card-desc{font-family:var(--fbody);font-size:12px;color:var(--ts);line-height:1.5;}
+.ppe-row{display:flex;align-items:center;gap:12px;padding:8px 12px;background:var(--surface);border:1px solid var(--border);border-radius:8px;margin-bottom:6px;}
+.ppe-icon{font-size:16px;flex-shrink:0;}.ppe-lbl{font-family:var(--fbody);font-size:13px;color:var(--tp);font-weight:600;}
+.ppe-status{margin-left:auto;font-family:var(--fbody);font-size:12px;font-weight:600;color:var(--green);}.ppe-status.fail{color:var(--red);}
+.cap-table{width:100%;border-collapse:collapse;margin-top:16px;font-family:var(--fbody);font-size:13px;}
+.cap-table th{background:var(--raised);color:var(--blue-b);font-weight:600;letter-spacing:.08em;padding:8px 12px;text-align:left;border-bottom:1px solid var(--border);}
+.cap-table td{padding:8px 12px;border-bottom:1px solid rgba(30,51,71,.6);color:var(--ts);vertical-align:top;}
+.cap-table td:first-child{color:var(--tp);font-weight:600;}.cap-table tr:last-child td{border-bottom:none;}
+.slide-footer{position:absolute;bottom:18px;left:68px;right:68px;display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--tm);border-top:1px solid var(--border);padding-top:8px;}
+.slide-footer-logo{font-family:var(--ftitle);font-weight:700;font-size:12px;color:var(--blue-b);}
+#lang-badge{position:fixed;top:14px;right:14px;z-index:9999;background:rgba(13,26,38,.92);border:1px solid var(--border);border-radius:999px;padding:6px 14px;display:flex;gap:8px;align-items:center;font-family:var(--ftitle);font-size:13px;font-weight:600;letter-spacing:.08em;backdrop-filter:blur(8px);}
+#lang-badge a{text-decoration:none;padding:2px 6px;border-radius:4px;}
+#lang-badge .active{color:var(--green);background:rgba(164,202,103,.14);}
+#lang-badge .inactive{color:var(--tm);}
+#lang-badge .sep{color:var(--border);}
+.reveal h1,.reveal h2,.reveal h3,.reveal h4{all:unset;display:block;font-family:var(--ftitle);}
+.reveal .progress{background:rgba(0,110,167,.2);}.reveal .progress span{background:var(--green);}
+.reveal .controls button{color:var(--blue);}
+</style>
+</head>
+<body>
+<div id="lang-badge"><a href="../index.html" class="inactive">EN</a><span class="sep">|</span><a href="index.html" class="active">ES</a></div>
+<div class="reveal"><div class="slides">
+
+<section>
+<div style="position:relative;width:100%;height:100%;">
+  <div class="cover-bg" style="background-image:url('../assets/cover.png')"></div>
+  <div class="cover-content">
+    <div class="cover-tag">FarmAgent · Edición Agave &nbsp;·&nbsp; Seguridad Laboral</div>
+    <div class="cover-headline">Cumplimiento de<br>EPP y Seguridad<br><em style="color:var(--green);font-style:normal;">Automatizado.</em></div>
+    <div class="cover-rule"></div>
+    <p class="cover-sub">Cómo FarmAgent crea una cadena de custodia indestructible y auditable para el cumplimiento de EPP — protegiendo a los jimadores, satisfaciendo a los inspectores STPS y asegurando los contratos ESG de las destilerías.</p>
+  </div>
+  <div class="cover-footer"><span class="cover-footer-logo">FarmAgent</span><span class="cover-footer-conf">FruitScout · Confidencial · Para Revisión CRT</span></div>
+</div></section>
+
+<section>
+<div class="slide-inner glow-orb">
+  <div class="two-col">
+    <div class="col-text">
+      <div class="slide-tag">El Riesgo</div>
+      <div class="slide-h1">El Campo de Agave Es Uno de los Lugares de Trabajo Agrícolas Más Peligrosos.</div>
+      <div class="slide-rule"></div>
+      <div class="slide-body">
+        <div class="hazard-grid">
+          <div class="hazard-card"><div class="hazard-card-icon">⚔️</div><div class="hazard-card-title">Coa de Jima</div><div class="hazard-card-desc">Herramienta de cosecha afilada como navaja. Coas que se escapan causan laceraciones severas en piernas y pies.</div></div>
+          <div class="hazard-card"><div class="hazard-card-icon">🌵</div><div class="hazard-card-title">Espinas y Savia</div><div class="hazard-card-desc">Espinas terminales en forma de aguja. La savia altamente ácida causa dermatitis severa y lesiones oculares.</div></div>
+          <div class="hazard-card"><div class="hazard-card-icon">☠️</div><div class="hazard-card-title">Agroquímicos</div><div class="hazard-card-desc">Pesticidas de dosis letal requieren protección respiratoria y dérmica completa. El envenenamiento en campo es un riesgo principal.</div></div>
+          <div class="hazard-card"><div class="hazard-card-icon">☀️</div><div class="hazard-card-title">Estrés por Calor</div><div class="hazard-card-desc">Jornadas de cosecha de 8 horas bajo el sol. El agotamiento por calor es un riesgo significativo y subreportado.</div></div>
+        </div>
+        <div class="callout" style="margin-top:12px;"><strong>Riesgo del productor:</strong> Multa STPS + paro laboral. Peor: un solo audit ESG fallido puede resultar en la <strong>exclusión de la lista de compradores de la destilería.</strong></div>
+      </div>
+    </div>
+    <div class="col-visual"><img src="../assets/cover.png" alt="Jimador en campo de agave"></div>
+  </div>
+  <div class="slide-footer"><span class="slide-footer-logo">FarmAgent</span><span>FruitScout &nbsp;·&nbsp; 2 / 7</span></div>
+</div></section>
+
+<section>
+<div class="slide-inner glow-orb">
+  <div class="two-col">
+    <div class="col-text">
+      <div class="slide-tag">Etapa 1 · Verificación Diaria de Cuadrilla en Compuerta</div>
+      <div class="slide-h1">10 Segundos de Video. Cero Registros de Lápiz.</div>
+      <div class="slide-rule"></div>
+      <div class="slide-body">
+        <p><strong>Hoy:</strong> El Cabo supuestamente revisa a cada trabajador al bajar del camión. En la realidad, los trabajadores se quitan el equipo incómodo en cuanto el capataz se voltea. La documentación es una casilla en una tabla sucia.</p>
+        <p><strong>FarmAgent:</strong> Antes de registrar su entrada al turno de cosecha, el Cabo graba un barrido de video de 10 segundos de la cuadrilla. FarmAgent verifica que cada trabajador traiga:</p>
+        <div class="ppe-row"><span class="ppe-icon">🥾</span><span class="ppe-lbl">Botas con Puntera de Acero</span><span class="ppe-status">✅ DETECTADO</span></div>
+        <div class="ppe-row"><span class="ppe-icon">🦵</span><span class="ppe-lbl">Polainas (Espinilleras)</span><span class="ppe-status">✅ DETECTADO</span></div>
+        <div class="ppe-row"><span class="ppe-icon">🧤</span><span class="ppe-lbl">Guantes de Cuero</span><span class="ppe-status">✅ DETECTADO</span></div>
+        <div class="ppe-row"><span class="ppe-icon">👓</span><span class="ppe-lbl">Protección Ocular</span><span class="ppe-status fail">❌ FALTANTE — Trabajador Marcado</span></div>
+        <div class="callout-green" style="margin-top:10px;">El trabajador no puede registrar entrada hasta corregir el equipo y capturar una foto aprobada. <strong>Totalmente automatizado. Totalmente auditable.</strong></div>
+      </div>
+    </div>
+    <div class="col-visual"><img src="../assets/apple_ppe_check.png" alt="Verificación EPP FieldAgent"></div>
+  </div>
+  <div class="slide-footer"><span class="slide-footer-logo">FarmAgent</span><span>FruitScout &nbsp;·&nbsp; 3 / 7</span></div>
+</div></section>
+
+<section>
+<div class="slide-inner glow-orb">
+  <div class="two-col">
+    <div class="col-text">
+      <div class="slide-tag">Evidencia de Plataforma · En Operación en Huertos de Manzana</div>
+      <div class="slide-h1">Esta Es una Plataforma en Operación — No un Prototipo.</div>
+      <div class="slide-rule"></div>
+      <div class="slide-body">
+        <p>La verificación de EPP de FruitScout está desplegada y operando en múltiples cultivos. La imagen muestra la <strong>Verificación de EPP — Aplicación de FarmAgent</strong> en uso por un aplicador químico en un huerto de manzana.</p>
+        <ul class="bullet-list">
+          <li>Trabajador en traje Tyvek completo toma un selfie antes de iniciar la operación de aspersión</li>
+          <li>El modelo CV verifica <strong>Respirador: DETECTADO ✅</strong> y <strong>Goggles: DETECTADO ✅</strong></li>
+          <li>La compuerta bloquea el temporizador de aspersión hasta que la verificación pase — mismo mecanismo que la compuerta de cuadrilla en agave</li>
+        </ul>
+        <div class="callout">Adaptar esto para las clasificaciones EPP de agave — polainas, guantes de cuero, botas con puntera — es una <strong>configuración de entrenamiento de modelo, no una nueva construcción de producto.</strong> La infraestructura está probada y en funcionamiento.</div>
+      </div>
+    </div>
+    <div class="col-visual"><img src="../assets/apple_ppe_check.png" alt="Selfie EPP en huerto de manzana"></div>
+  </div>
+  <div class="slide-footer"><span class="slide-footer-logo">FarmAgent</span><span>FruitScout &nbsp;·&nbsp; 4 / 7</span></div>
+</div></section>
+
+<section>
+<div class="slide-inner glow-orb">
+  <div class="two-col">
+    <div class="col-text">
+      <div class="slide-tag">Etapas 2 y 3 · Bloqueo de Seguridad Química y Monitoreo Drone</div>
+      <div class="slide-h1">Cada Aspersión Bloqueada. Cada Turno Monitoreado.</div>
+      <div class="slide-rule"></div>
+      <div class="slide-body">
+        <p style="font-size:12px;color:var(--green);font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px;">Bloqueo de Seguridad en Aplicación Química</p>
+        <ul class="bullet-list">
+          <li>El aplicador escanea el código de barras del químico antes de mezclar. <strong>OCR de etiqueta</strong> consulta la base de datos COFEPRIS para los requisitos específicos de EPP.</li>
+          <li>El trabajador toma un selfie. La compuerta CV verifica contra la EPP <em>específica</em> que ese químico requiere — una mascarilla de tela vs. respirador de doble cartucho se detecta siempre.</li>
+          <li>El sistema bloquea físicamente el temporizador de "Iniciar Aplicación" y alerta al agrónomo si falla la verificación.</li>
+        </ul>
+        <p style="font-size:12px;color:var(--amber);font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin:10px 0 6px;">Monitoreo Autónomo Durante el Turno</p>
+        <ul class="bullet-list">
+          <li>Mientras el drone realiza escaneos rutinarios, <strong>ejecuta automáticamente el modelo EPP</strong> sobre cualquier trabajador en el encuadre.</li>
+          <li>Mapa de calor de violaciones con GPS — "Trabajador sin Protección Ocular en Surco 47, Sector B3."</li>
+          <li><strong>Puntuación Semanal de Seguridad</strong> por cuadrilla — vinculada a bonos de producción, convirtiendo el cumplimiento en un incentivo.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-visual"><img src="../assets/cover.png" alt="Cobertura de seguridad"></div>
+  </div>
+  <div class="slide-footer"><span class="slide-footer-logo">FarmAgent</span><span>FruitScout &nbsp;·&nbsp; 5 / 7</span></div>
+</div></section>
+
+<section>
+<div class="slide-inner glow-orb">
+  <div class="two-col">
+    <div class="col-text">
+      <div class="slide-tag">Etapa 4 · Preparación para Auditoría STPS y ESG</div>
+      <div class="slide-h1">Inspector Llega Sin Previo Aviso. Cero Estrés.</div>
+      <div class="slide-rule"></div>
+      <div class="slide-body">
+        <p><strong>Hoy:</strong> El gerente de rancho pasa 3 horas buscando en archiveros. Hojas de briefing de seguridad firmadas. Registros de revisiones diarias. Esperando que nada falte.</p>
+        <p style="font-size:12px;color:var(--green);font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin:10px 0 6px;">Auditoría Sin Estrés FarmAgent</p>
+        <table class="cap-table">
+          <tr><th>Herramienta</th><th>Lo Que Recibe el Inspector</th></tr>
+          <tr><td>Dashboard de Cumplimiento en Vivo</td><td>En tiempo real: 14 cuadrillas activas, 100% EPP verificado, 2 aspersores equipados — en este momento</td></tr>
+          <tr><td>Reporte STPS Automatizado</td><td>PDF legalmente defensible: cada verificación de video diaria cruzada con la lista de trabajadores, probando cumplimiento NOM-017-STPS</td></tr>
+          <tr><td>Exportación ESG para Destilería</td><td>Enlace de solo lectura para auditor de Patrón, Herradura o Cuervo — prueba completa de abastecimiento ético, al instante</td></tr>
+        </table>
+        <div class="callout" style="margin-top:12px;">El Tequila está bajo la mirada del mundo. FarmAgent prueba que tus trabajadores están protegidos <strong>todos los días</strong> — con las fotos que lo demuestran.</div>
+      </div>
+    </div>
+    <div class="col-visual"><img src="../assets/apple_ppe_check.png" alt="Plataforma de seguridad"></div>
+  </div>
+  <div class="slide-footer"><span class="slide-footer-logo">FarmAgent</span><span>FruitScout &nbsp;·&nbsp; 6 / 7</span></div>
+</div></section>
+
+<section>
+<div style="position:relative;width:100%;height:100%;display:flex;align-items:center;justify-content:center;text-align:center;">
+  <div class="cover-bg" style="background-image:url('../assets/closing.png')"></div>
+  <div style="position:absolute;inset:0;background:rgba(8,14,20,.80);"></div>
+  <div style="position:relative;z-index:2;padding:48px;max-width:760px;">
+    <div style="font-family:var(--ftitle);font-weight:200;font-size:52px;color:var(--tp);line-height:1.25;margin-bottom:18px;">
+      Cada trabajador, protegido.<br>Cada turno, <em style="color:var(--green);font-style:normal;">documentado.</em>
+    </div>
+    <div class="cover-rule" style="margin:0 auto 24px;"></div>
+    <p style="font-family:var(--fbody);font-size:16px;color:var(--ts);line-height:1.7;max-width:580px;margin:0 auto;">
+      No puedes permitirte un incidente de seguridad. No puedes darte el lujo de perder tu contrato con la destilería por un audit ESG fallido.<br><br>
+      <strong style="color:var(--tp);">FarmAgent hace que el cumplimiento de seguridad sea automático, invisible y permanentemente comprobable — antes de que una sola coa toque una piña.</strong>
+    </p>
+    <div style="margin-top:32px;font-family:var(--ftitle);font-weight:700;font-size:17px;color:var(--blue-b);">FarmAgent · FruitScout</div>
+  </div>
+</div></section>
+
+</div></div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+<script>Reveal.initialize({hash:true,transition:'fade',transitionSpeed:'default',backgroundTransition:'fade',progress:true,controls:true,slideNumber:false,center:false,disableLayout:true,margin:0});</script>
+</body>
+</html>
