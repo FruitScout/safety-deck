@@ -72,6 +72,12 @@
 </style>
 </head>
 <body>
+<div id="lang-badge">
+  <a href="#" id="btn-en" class="active" onclick="setLang('en');return false;">EN</a>
+  <span class="sep">|</span>
+  <a href="#" id="btn-es" class="inactive" onclick="setLang('es');return false;">ES</a>
+</div>
+
 <div class="reveal">
   <div class="slides">
 
@@ -80,14 +86,14 @@
 <div style="position:relative;width:100%;height:100%;">
   <div class="cover-bg" style="background-image:url('assets/cover.png')"></div>
   <div class="cover-content">
-    <div class="cover-tag">FarmAgent · Agave Edition &nbsp;·&nbsp; Worker Safety</div>
-    <div class="cover-headline">PPE &amp; Safety<br>Compliance<br><em style="color:var(--green);font-style:normal;">Automated.</em></div>
+    <div class="cover-tag" data-i18n="hero-tag">FarmAgent · Agave Edition &nbsp;·&nbsp; Worker Safety</div>
+    <div class="cover-headline" data-i18n="hero-h1">PPE &amp; Safety<br>Compliance<br><em style="color:var(--green);font-style:normal;">Automated.</em></div>
     <div class="cover-rule"></div>
-    <p class="cover-sub">How FarmAgent creates an unbreakable, auditable chain of custody for PPE compliance — protecting jimadors, satisfying STPS inspectors, and securing distillery ESG contracts.</p>
+    <p class="cover-sub" data-i18n="hero-sub">How FarmAgent creates an unbreakable, auditable chain of custody for PPE compliance — protecting jimadors, satisfying STPS inspectors, and securing distillery ESG contracts.</p>
   </div>
   <div class="cover-footer">
     <span class="cover-footer-logo">FarmAgent</span>
-    <span class="cover-footer-conf">FruitScout · Confidential · For CRT Review</span>
+    <span class="cover-footer-conf" data-i18n="footer-conf">FruitScout · Confidential · For CRT Review</span>
   </div>
 </div></section>
 
@@ -96,33 +102,33 @@
 <div class="slide-inner glow-orb">
   <div class="two-col">
     <div class="col-text">
-      <div class="slide-tag">The Risk</div>
-      <div class="slide-h1">The Agave Field Is One of Agriculture's Most Dangerous Workplaces.</div>
+      <div class="slide-tag" data-i18n="s2-tag">The Risk</div>
+      <div class="slide-h1" data-i18n="s2-h2">The Agave Field Is One of Agriculture's Most Dangerous Workplaces.</div>
       <div class="slide-rule"></div>
       <div class="slide-body">
         <div class="hazard-grid">
           <div class="hazard-card">
             <div class="hazard-card-icon">⚔️</div>
-            <div class="hazard-card-title">Coa de Jima</div>
-            <div class="hazard-card-desc">Razor-sharp harvesting blade. Slipped coas cause severe lower-leg and foot lacerations.</div>
+            <div class="hazard-card-title" data-i18n="s2-h1">Coa de Jima</div>
+            <div class="hazard-card-desc" data-i18n="s2-d1">Razor-sharp harvesting blade. Slipped coas cause severe lower-leg and foot lacerations.</div>
           </div>
           <div class="hazard-card">
             <div class="hazard-card-icon">🌵</div>
-            <div class="hazard-card-title">Spines &amp; Sap</div>
-            <div class="hazard-card-desc">Needle-like terminal spines. Highly acidic sap causes severe contact dermatitis and eye injury.</div>
+            <div class="hazard-card-title" data-i18n="s2-h2b">Spines &amp; Sap</div>
+            <div class="hazard-card-desc" data-i18n="s2-d2">Needle-like terminal spines. Highly acidic sap causes severe contact dermatitis and eye injury.</div>
           </div>
           <div class="hazard-card">
             <div class="hazard-card-icon">☠️</div>
-            <div class="hazard-card-title">Agrochemicals</div>
-            <div class="hazard-card-desc">Lethal-dose pesticides require full respiratory and dermal protection. Field poisoning is a top grower liability.</div>
+            <div class="hazard-card-title" data-i18n="s2-h3">Agrochemicals</div>
+            <div class="hazard-card-desc" data-i18n="s2-d3">Lethal-dose pesticides require full respiratory and dermal protection. Field poisoning is a top grower liability.</div>
           </div>
           <div class="hazard-card">
             <div class="hazard-card-icon">☀️</div>
-            <div class="hazard-card-title">Heat Stress</div>
-            <div class="hazard-card-desc">8-hour harvest shifts in full sun. Heat exhaustion is a significant and underreported risk.</div>
+            <div class="hazard-card-title" data-i18n="s2-h4">Heat Stress</div>
+            <div class="hazard-card-desc" data-i18n="s2-d4">8-hour harvest shifts in full sun. Heat exhaustion is a significant and underreported risk.</div>
           </div>
         </div>
-        <div class="callout" style="margin-top:12px;"><strong>Grower's risk:</strong> STPS fine + work stoppage. Worse: a single failed ESG audit can get a grower <strong>blacklisted by their distillery buyer.</strong></div>
+        <div class="callout" style="margin-top:12px;" data-i18n="s2-callout"><strong>Grower's risk:</strong> STPS fine + work stoppage. Worse: a single failed ESG audit can get a grower <strong>blacklisted by their distillery buyer.</strong></div>
       </div>
     </div>
     <div class="col-visual"><img src="assets/cover.png" alt="Jimador in agave field"></div>
@@ -135,17 +141,17 @@
 <div class="slide-inner glow-orb">
   <div class="two-col">
     <div class="col-text">
-      <div class="slide-tag">Stage 1 · Daily Crew Gate Verification</div>
-      <div class="slide-h1">10-Second Video Pan. Zero Pencil-Whipping.</div>
+      <div class="slide-tag" data-i18n="s3-tag">Stage 1 · Daily Crew Gate Verification</div>
+      <div class="slide-h1" data-i18n="s3-h2">10-Second Video Pan. Zero Pencil-Whipping.</div>
       <div class="slide-rule"></div>
       <div class="slide-body">
-        <p><strong>Today:</strong> The Cabo is supposed to check every worker as they step off the truck. In reality, workers remove hot, uncomfortable gear the moment the foreman turns away. Documentation is a checkbox on a dirty clipboard.</p>
-        <p><strong>FarmAgent:</strong> Before a worker can clock into the harvest shift, the Cabo records a 10-second smartphone video pan of the crew. FarmAgent verifies every worker is wearing:</p>
-        <div class="ppe-row"><span class="ppe-icon">🥾</span><span class="ppe-lbl">Steel-Toe Boots</span><span class="ppe-status">✅ DETECTED</span></div>
-        <div class="ppe-row"><span class="ppe-icon">🦵</span><span class="ppe-lbl">Shin Guards (Polainas)</span><span class="ppe-status">✅ DETECTED</span></div>
-        <div class="ppe-row"><span class="ppe-icon">🧤</span><span class="ppe-lbl">Leather Gloves</span><span class="ppe-status">✅ DETECTED</span></div>
-        <div class="ppe-row"><span class="ppe-icon">👓</span><span class="ppe-lbl">Eye Protection</span><span class="ppe-status fail">❌ MISSING — Worker Flagged</span></div>
-        <div class="callout-green" style="margin-top:10px;">Worker cannot clock in until the gear is corrected and a passing photo is captured. <strong>Fully automated. Fully auditable.</strong></div>
+        <p data-i18n="s3-p1"><strong>Today:</strong> The Cabo is supposed to check every worker as they step off the truck. In reality, workers remove hot, uncomfortable gear the moment the foreman turns away. Documentation is a checkbox on a dirty clipboard.</p>
+        <p data-i18n="s3-p2"><strong>FarmAgent:</strong> Before a worker can clock into the harvest shift, the Cabo records a 10-second smartphone video pan of the crew. FarmAgent verifies every worker is wearing:</p>
+        <div class="ppe-row"><span class="ppe-icon">🥾</span><span class="ppe-lbl" data-i18n="s3-r1">Steel-Toe Boots</span><span class="ppe-status" data-i18n="s3-s1">✅ DETECTED</span></div>
+        <div class="ppe-row"><span class="ppe-icon">🦵</span><span class="ppe-lbl" data-i18n="s3-r2">Shin Guards (Polainas)</span><span class="ppe-status" data-i18n="s3-s1">✅ DETECTED</span></div>
+        <div class="ppe-row"><span class="ppe-icon">🧤</span><span class="ppe-lbl" data-i18n="s3-r3">Leather Gloves</span><span class="ppe-status" data-i18n="s3-s1">✅ DETECTED</span></div>
+        <div class="ppe-row"><span class="ppe-icon">👓</span><span class="ppe-lbl" data-i18n="s3-r4">Eye Protection</span><span class="ppe-status fail" data-i18n="s3-s2">❌ MISSING — Worker Flagged</span></div>
+        <div class="callout-green" style="margin-top:10px;" data-i18n="s3-callout">Worker cannot clock in until the gear is corrected and a passing photo is captured. <strong>Fully automated. Fully auditable.</strong></div>
       </div>
     </div>
     <div class="col-visual"><img src="assets/crew_gate_check.png" alt="FieldAgent PPE worker verification"></div>
@@ -158,17 +164,17 @@
 <div class="slide-inner glow-orb">
   <div class="two-col">
     <div class="col-text">
-      <div class="slide-tag">Platform Proof · Live in Apple Orchards</div>
-      <div class="slide-h1">This Is a Running Platform — Not a Prototype.</div>
+      <div class="slide-tag" data-i18n="s4-tag">Platform Proof · Live in Apple Orchards</div>
+      <div class="slide-h1" data-i18n="s4-h2">This Is a Running Platform — Not a Prototype.</div>
       <div class="slide-rule"></div>
       <div class="slide-body">
-        <p>FruitScout's PPE verification is deployed and operational in multiple crop contexts. The image shows <strong>FieldAgent's PPE Compliance Check — Spraying</strong> in use by a chemical applicator in an apple orchard.</p>
+        <p data-i18n="s4-p1">FruitScout's PPE verification is deployed and operational in multiple crop contexts. The image shows <strong>FieldAgent's PPE Compliance Check — Spraying</strong> in use by a chemical applicator in an apple orchard.</p>
         <ul class="bullet-list">
-          <li>Worker in full Tyvek suit takes a selfie before beginning spray operation</li>
-          <li>CV model verifies <strong>Respirator: DETECTED ✅</strong> and <strong>Goggles: DETECTED ✅</strong></li>
-          <li>Hard-gate blocks spray timer until the check passes — same mechanic as the agave crew gate</li>
+          <li data-i18n="s4-li1">Worker in full Tyvek suit takes a selfie before beginning spray operation</li>
+          <li data-i18n="s4-li2">CV model verifies <strong>Respirator: DETECTED ✅</strong> and <strong>Goggles: DETECTED ✅</strong></li>
+          <li data-i18n="s4-li3">Hard-gate blocks spray timer until the check passes — same mechanic as the agave crew gate</li>
         </ul>
-        <div class="callout">Adapting this for agave PPE classifications — polainas, leather gloves, steel-toe boots — is a <strong>model training configuration, not a new product build.</strong> The infrastructure is proven and running.</div>
+        <div class="callout" data-i18n="s4-callout">Adapting this for agave PPE classifications — polainas, leather gloves, steel-toe boots — is a <strong>model training configuration, not a new product build.</strong> The infrastructure is proven and running.</div>
       </div>
     </div>
     <div class="col-visual"><img src="assets/apple_ppe_check.png" alt="Apple orchard PPE selfie check"></div>
@@ -181,21 +187,21 @@
 <div class="slide-inner glow-orb">
   <div class="two-col">
     <div class="col-text">
-      <div class="slide-tag">Stages 2 &amp; 3 · Chemical Safety Lock &amp; Drone Monitoring</div>
-      <div class="slide-h1">Every Spray Gated. Every Shift Monitored.</div>
+      <div class="slide-tag" data-i18n="s5-tag">Stages 2 &amp; 3 · Chemical Safety Lock &amp; Drone Monitoring</div>
+      <div class="slide-h1" data-i18n="s5-h2">Every Spray Gated. Every Shift Monitored.</div>
       <div class="slide-rule"></div>
       <div class="slide-body">
-        <p style="font-size:12px;color:var(--green);font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px;">Chemical Application Safety Lock</p>
+        <p style="font-size:12px;color:var(--green);font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px;" data-i18n="s5-sub1">Chemical Application Safety Lock</p>
         <ul class="bullet-list">
-          <li>Applicator scans chemical barcode before mixing. <strong>Label OCR</strong> retrieves exact PPE requirements from COFEPRIS database.</li>
-          <li>Worker takes a selfie. CV hard-gate verifies against the <em>specific</em> PPE demanded by that chemical — cloth mask vs. dual-cartridge respirator is caught every time.</li>
-          <li>System physically blocks "Start Application" timer and alerts agronomist if check fails.</li>
+          <li data-i18n="s5-li1">Applicator scans chemical barcode before mixing. <strong>Label OCR</strong> retrieves exact PPE requirements from COFEPRIS database.</li>
+          <li data-i18n="s5-li2">Worker takes a selfie. CV hard-gate verifies against the <em>specific</em> PPE demanded by that chemical — cloth mask vs. dual-cartridge respirator is caught every time.</li>
+          <li data-i18n="s5-li3">System physically blocks "Start Application" timer and alerts agronomist if check fails.</li>
         </ul>
-        <p style="font-size:12px;color:var(--amber);font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin:10px 0 6px;">Autonomous Mid-Shift Monitoring</p>
+        <p style="font-size:12px;color:var(--amber);font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin:10px 0 6px;" data-i18n="s5-sub2">Autonomous Mid-Shift Monitoring</p>
         <ul class="bullet-list">
-          <li>While the drone flies routine inventory or phytosanitary scans, it <strong>automatically runs the PPE model</strong> on any workers captured in frame.</li>
-          <li>GPS-tagged violation heatmap — "Worker without Eye Protection at Row 47, Sector B3."</li>
-          <li><strong>Weekly Safety Score</strong> per crew — tied to production bonuses, turning compliance into an incentive.</li>
+          <li data-i18n="s5-li4">While the drone flies routine inventory or phytosanitary scans, it <strong>automatically runs the PPE model</strong> on any workers captured in frame.</li>
+          <li data-i18n="s5-li5">GPS-tagged violation heatmap — "Worker without Eye Protection at Row 47, Sector B3."</li>
+          <li data-i18n="s5-li6"><strong>Weekly Safety Score</strong> per crew — tied to production bonuses, turning compliance into an incentive.</li>
         </ul>
       </div>
     </div>
@@ -209,19 +215,19 @@
 <div class="slide-inner glow-orb">
   <div class="two-col">
     <div class="col-text">
-      <div class="slide-tag">Stage 4 · STPS &amp; ESG Audit Readiness</div>
-      <div class="slide-h1">Inspector Arrives Unannounced. Zero Scramble.</div>
+      <div class="slide-tag" data-i18n="s6-tag">Stage 4 · STPS &amp; ESG Audit Readiness</div>
+      <div class="slide-h1" data-i18n="s6-h2">Inspector Arrives Unannounced. Zero Scramble.</div>
       <div class="slide-rule"></div>
       <div class="slide-body">
-        <p><strong>Today:</strong> The farm manager spends 3 hours digging through filing cabinets. Signed safety briefing sheets. Daily check logs. Hoping nothing is missing.</p>
-        <p style="font-size:12px;color:var(--green);font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin:10px 0 6px;">FarmAgent Zero-Stress Audit</p>
+        <p data-i18n="s6-p1"><strong>Today:</strong> The farm manager spends 3 hours digging through filing cabinets. Signed safety briefing sheets. Daily check logs. Hoping nothing is missing.</p>
+        <p style="font-size:12px;color:var(--green);font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin:10px 0 6px;" data-i18n="s6-sub1">FarmAgent Zero-Stress Audit</p>
         <table class="cap-table">
-          <tr><th>Tool</th><th>What the Inspector Gets</th></tr>
-          <tr><td>Live Compliance Dashboard</td><td>Real-time: 14 crews active, 100% PPE verified, 2 sprayers geared — at this moment</td></tr>
-          <tr><td>Automated STPS Report</td><td>Legally defensible PDF: every daily video verification cross-referenced with worker manifest, proving NOM-017-STPS compliance</td></tr>
-          <tr><td>Distillery ESG Export</td><td>Read-only portal link shared with Patrón, Herradura, or Cuervo auditor — full ethical sourcing proof, instant</td></tr>
+          <tr><th data-i18n="s6-th1">Tool</th><th data-i18n="s6-th2">What the Inspector Gets</th></tr>
+          <tr><td data-i18n="s6-c1">Live Compliance Dashboard</td><td data-i18n="s6-d1">Real-time: 14 crews active, 100% PPE verified, 2 sprayers geared — at this moment</td></tr>
+          <tr><td data-i18n="s6-c2">Automated STPS Report</td><td data-i18n="s6-d2">Legally defensible PDF: every daily video verification cross-referenced with worker manifest, proving NOM-017-STPS compliance</td></tr>
+          <tr><td data-i18n="s6-c3">Distillery ESG Export</td><td data-i18n="s6-d3">Read-only portal link shared with Patrón, Herradura, or Cuervo auditor — full ethical sourcing proof, instant</td></tr>
         </table>
-        <div class="callout" style="margin-top:12px;">Tequila is watched by the world. FarmAgent proves your workers are protected <strong>every single day</strong> — with the photos to back it up.</div>
+        <div class="callout" style="margin-top:12px;" data-i18n="s6-callout">Tequila is watched by the world. FarmAgent proves your workers are protected <strong>every single day</strong> — with the photos to back it up.</div>
       </div>
     </div>
     <div class="col-visual"><img src="assets/agent_tablet.png" alt="Safety audit platform"></div>
@@ -235,11 +241,11 @@
   <div class="cover-bg" style="background-image:url('assets/closing.png')"></div>
   <div style="position:absolute;inset:0;background:rgba(8,14,20,.80);"></div>
   <div style="position:relative;z-index:2;padding:48px;max-width:760px;">
-    <div style="font-family:var(--ftitle);font-weight:200;font-size:52px;color:var(--tp);line-height:1.25;margin-bottom:18px;">
+    <div style="font-family:var(--ftitle);font-weight:200;font-size:52px;color:var(--tp);line-height:1.25;margin-bottom:18px;" data-i18n="s7-h2">
       Every worker, protected.<br>Every shift, <em style="color:var(--green);font-style:normal;">documented.</em>
     </div>
     <div class="cover-rule" style="margin:0 auto 24px;"></div>
-    <p style="font-family:var(--fbody);font-size:16px;color:var(--ts);line-height:1.7;max-width:580px;margin:0 auto;">
+    <p style="font-family:var(--fbody);font-size:16px;color:var(--ts);line-height:1.7;max-width:580px;margin:0 auto;" data-i18n="s7-p1">
       You can't afford a safety incident. You can't afford to lose your distillery contract over a failed ESG audit.<br><br>
       <strong style="color:var(--tp);">FarmAgent makes safety compliance automatic, invisible, and permanently provable — before a single coa hits a piña.</strong>
     </p>
@@ -249,6 +255,7 @@
 
   </div>
 </div>
+
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
 <script>
 Reveal.initialize({
@@ -256,6 +263,111 @@ Reveal.initialize({
   backgroundTransition: 'fade', progress: true, controls: true,
   slideNumber: false, center: false, disableLayout: true, margin: 0,
 });
+
+const i18n = {
+  en: {
+    "hero-tag":"FarmAgent · Agave Edition &nbsp;·&nbsp; Worker Safety",
+    "hero-h1":"PPE &amp; Safety<br>Compliance<br><em style='color:var(--green);font-style:normal;'>Automated.</em>",
+    "hero-sub":"How FarmAgent creates an unbreakable, auditable chain of custody for PPE compliance — protecting jimadors, satisfying STPS inspectors, and securing distillery ESG contracts.",
+    "footer-conf": "FruitScout · Confidential · For CRT Review",
+    "s2-tag":"The Risk", "s2-h2":"The Agave Field Is One of Agriculture's Most Dangerous Workplaces.",
+    "s2-h1":"Coa de Jima", "s2-d1":"Razor-sharp harvesting blade. Slipped coas cause severe lower-leg and foot lacerations.",
+    "s2-h2b":"Spines & Sap", "s2-d2":"Needle-like terminal spines. Highly acidic sap causes severe contact dermatitis and eye injury.",
+    "s2-h3":"Agrochemicals", "s2-d3":"Lethal-dose pesticides require full respiratory and dermal protection. Field poisoning is a top grower liability.",
+    "s2-h4":"Heat Stress", "s2-d4":"8-hour harvest shifts in full sun. Heat exhaustion is a significant and underreported risk.",
+    "s2-callout":"<strong>Grower's risk:</strong> STPS fine + work stoppage. Worse: a single failed ESG audit can get a grower <strong>blacklisted by their distillery buyer.</strong>",
+    "s3-tag":"Stage 1 · Daily Crew Gate Verification", "s3-h2":"10-Second Video Pan. Zero Pencil-Whipping.",
+    "s3-p1":"<strong>Today:</strong> The Cabo is supposed to check every worker as they step off the truck. In reality, workers remove hot, uncomfortable gear the moment the foreman turns away. Documentation is a checkbox on a dirty clipboard.",
+    "s3-p2":"<strong>FarmAgent:</strong> Before a worker can clock into the harvest shift, the Cabo records a 10-second smartphone video pan of the crew. FarmAgent verifies every worker is wearing:",
+    "s3-r1":"Steel-Toe Boots", "s3-r2":"Shin Guards (Polainas)", "s3-r3":"Leather Gloves", "s3-r4":"Eye Protection",
+    "s3-s1":"✅ DETECTED", "s3-s2":"❌ MISSING — Worker Flagged",
+    "s3-callout":"Worker cannot clock in until the gear is corrected and a passing photo is captured. <strong>Fully automated. Fully auditable.</strong>",
+    "s4-tag":"Platform Proof · Live in Apple Orchards", "s4-h2":"This Is a Running Platform — Not a Prototype.",
+    "s4-p1":"FruitScout's PPE verification is deployed and operational in multiple crop contexts. The image shows <strong>FieldAgent's PPE Compliance Check — Spraying</strong> in use by a chemical applicator in an apple orchard.",
+    "s4-li1":"Worker in full Tyvek suit takes a selfie before beginning spray operation",
+    "s4-li2":"CV model verifies <strong>Respirator: DETECTED ✅</strong> and <strong>Goggles: DETECTED ✅</strong>",
+    "s4-li3":"Hard-gate blocks spray timer until the check passes — same mechanic as the agave crew gate",
+    "s4-callout":"Adapting this for agave PPE classifications — polainas, leather gloves, steel-toe boots — is a <strong>model training configuration, not a new product build.</strong> The infrastructure is proven and running.",
+    "s5-tag":"Stages 2 & 3 · Chemical Safety Lock & Drone Monitoring", "s5-h2":"Every Spray Gated. Every Shift Monitored.",
+    "s5-sub1":"Chemical Application Safety Lock",
+    "s5-li1":"Applicator scans chemical barcode before mixing. <strong>Label OCR</strong> retrieves exact PPE requirements from COFEPRIS database.",
+    "s5-li2":"Worker takes a selfie. CV hard-gate verifies against the <em>specific</em> PPE demanded by that chemical — cloth mask vs. dual-cartridge respirator is caught every time.",
+    "s5-li3":"System physically blocks 'Start Application' timer and alerts agronomist if check fails.",
+    "s5-sub2":"Autonomous Mid-Shift Monitoring",
+    "s5-li4":"While the drone flies routine inventory or phytosanitary scans, it <strong>automatically runs the PPE model</strong> on any workers captured in frame.",
+    "s5-li5":"GPS-tagged violation heatmap — 'Worker without Eye Protection at Row 47, Sector B3.'",
+    "s5-li6":"<strong>Weekly Safety Score</strong> per crew — tied to production bonuses, turning compliance into an incentive.",
+    "s6-tag":"Stage 4 · STPS & ESG Audit Readiness", "s6-h2":"Inspector Arrives Unannounced. Zero Scramble.",
+    "s6-p1":"<strong>Today:</strong> The farm manager spends 3 hours digging through filing cabinets. Signed safety briefing sheets. Daily check logs. Hoping nothing is missing.",
+    "s6-sub1":"FarmAgent Zero-Stress Audit",
+    "s6-th1":"Tool", "s6-th2":"What the Inspector Gets",
+    "s6-c1":"Live Compliance Dashboard", "s6-d1":"Real-time: 14 crews active, 100% PPE verified, 2 sprayers geared — at this moment",
+    "s6-c2":"Automated STPS Report", "s6-d2":"Legally defensible PDF: every daily video verification cross-referenced with worker manifest, proving NOM-017-STPS compliance",
+    "s6-c3":"Distillery ESG Export", "s6-d3":"Read-only portal link shared with Patrón, Herradura, or Cuervo auditor — full ethical sourcing proof, instant",
+    "s6-callout":"Tequila is watched by the world. FarmAgent proves your workers are protected <strong>every single day</strong> — with the photos to back it up.",
+    "s7-h2":"Every worker, protected.<br>Every shift, <em style='color:var(--green);font-style:normal;'>documented.</em>",
+    "s7-p1":"You can't afford a safety incident. You can't afford to lose your distillery contract over a failed ESG audit.<br><br><strong style='color:var(--tp);'>FarmAgent makes safety compliance automatic, invisible, and permanently provable — before a single coa hits a piña.</strong>"
+  },
+  es: {
+    "hero-tag":"FarmAgent · Edición Agave &nbsp;·&nbsp; Seguridad Laboral",
+    "hero-h1":"Cumplimiento EPP<br>y Seguridad<br><em style='color:var(--green);font-style:normal;'>Automatizado.</em>",
+    "hero-sub":"Cómo FarmAgent crea una cadena de custodia inquebrantable para el cumplimiento de EPP — protegiendo jimadores, cumpliendo con los inspectores STPS y asegurando contratos ESG con destilerías.",
+    "footer-conf": "FruitScout · Confidencial · Para Revisión del CRT",
+    "s2-tag":"El Riesgo", "s2-h2":"El Campo de Agave es Uno de los Lugares de Trabajo Más Peligrosos.",
+    "s2-h1":"Coa de Jima", "s2-d1":"Herramienta filosa. Los resbalones causan severos cortes en la pierna y el pie.",
+    "s2-h2b":"Espinas y Savia", "s2-d2":"Espinas terminales aguzadas. La savia ácida causa severa dermatitis por contacto y lesiones oculares.",
+    "s2-h3":"Agroquímicos", "s2-d3":"Pesticidas letales exigen protección dérmica y respiratoria. Intoxicaciones son un riesgo grave.",
+    "s2-h4":"Golpe de Calor", "s2-d4":"Turnos de 8 horas a pleno sol. El agotamiento por calor es un riesgo significativo y no reportado.",
+    "s2-callout":"<strong>Riesgo del productor:</strong> Multa STPS + paro de labores. Peor aún: reprobar una auditoría ESG significa perder el contrato de la destilería.",
+    "s3-tag":"Etapa 1 · Verificación Diaria de Puerta de Cuadrilla", "s3-h2":"Paneo de Video de 10 Segundos. Cero Falsificaciones.",
+    "s3-p1":"<strong>Hoy:</strong> El cabo revisa a cada trabajador al bajar de la camioenta. En realidad, los trabajadores se quitan el equipo caluroso o incómodo justo cuando el capataz se voltea.",
+    "s3-p2":"<strong>FarmAgent:</strong> Antes de que un trabajador registre su entrada al turno, el Cabo graba un video de 10 segundos con su smartphone paneando la cuadrilla. FarmAgent verifica que todos vistan:",
+    "s3-r1":"Botas con Casquillo", "s3-r2":"Polainas de Protección", "s3-r3":"Guantes de Cuero", "s3-r4":"Lentes de Seguridad",
+    "s3-s1":"✅ DETECTADO", "s3-s2":"❌ FALTANTE — Trabajador Marcado",
+    "s3-callout":"El trabajador no puede iniciar su turno hasta que se corrija el equipo y se capture una foto aprobatoria. Totalmente automatizado y auditable.",
+    "s4-tag":"Prueba de Plataforma · En Vivo en Manzanos", "s4-h2":"Esta es una Plataforma Funcionando — No un Prototipo.",
+    "s4-p1":"La verificación de EPP de FruitScout está en operación. La imagen muestra a nuestra app validando seguridad de aplicación de agroquímicos en un huerto de manzanas.",
+    "s4-li1":"El trabajador con traje Tyvek completo se toma una selfie antes de iniciar la aspersión",
+    "s4-li2":"El modelo detecta exitosamente <strong>Respirador: DETECTADO ✅</strong> y <strong>Gafas: DETECTADO ✅</strong>",
+    "s4-li3":"El sistema bloquea el temporizador de la aplicación hasta que el chequeo pase exitosamente",
+    "s4-callout":"Adaptar esto a las clasificaciones del agave — polainas, guantes de cuero — es una <strong>configuración de modelo, no el construir de un producto desde cero.</strong>",
+    "s5-tag":"Etapas 2 y 3 · Candado Químico y Monitoreo de Dron", "s5-h2":"Toda Aplicación Bloqueada. Todo Turno Monitoreado.",
+    "s5-sub1":"Bloqueo de Seguridad en Agroquímicos",
+    "s5-li1":"El aplicador escanea de código de barras. <strong>OCR de Etiqueta</strong> extrae el EPP de la base de datos de COFEPRIS.",
+    "s5-li2":"El trabajador se toma una selfie. El modelo verifica usando <strong>los items requeridos específicamente</strong> por el químico escaneado.",
+    "s5-li3":"Falla de Chequeo bloquea temporizador y notifica al agrónomo en el escritorio.",
+    "s5-sub2":"Monitoreo Autónomo de Mitad de Turno",
+    "s5-li4":"Mientras el dron hace inventario o detección fito, <strong>corre el modelo detrás</strong> en caso de observar personal en el lote.",
+    "s5-li5":"Mapa de calor marcado con GPS con violaciones detectadas por el Dron en segundo plano.",
+    "s5-li6":"<strong>Calificación de Seguridad Semanal</strong> generada para cada cuadrilla para crear bonos.",
+    "s6-tag":"Etapa 4 · Reparación de Exámenes STPS y ESG", "s6-h2":"El Inspector Llega Sin Aviso. Cero Estrés.",
+    "s6-p1":"<strong>Actualidad:</strong> El gerente busca 3 horas en archiveros por firmas. Todo para esperar a que no falte nada.",
+    "s6-sub1":"Auditoría Libre de Estrés FarmAgent",
+    "s6-th1":"Herramienta", "s6-th2":"Qué Obtiene El Inspector",
+    "s6-c1":"Dashboard en Vivo", "s6-d1":"En tiempo real: 14 cuadrillas activas, 100% de EPP validado, en este minuto",
+    "s6-c2":"Reportes STPS Autogenerados", "s6-d2":"PDF legal: cruzando el listado con registros en video validando cumplimiento total de NOM-017-STPS.",
+    "s6-c3":"Exportación ESG Destilería", "s6-d3":"Enlace portal compartido para auditores Patrón, Cuervo etc — mostrando procedencia ética.",
+    "s6-callout":"El Tequila está en vista de todo el mundo. FarmAgent te permite demostrar protección real, documentada fotográficamente.",
+    "s7-h2":"Todo trabajador, protegido.<br>Todo turno, <em style='color:var(--green);font-style:normal;'>documentado.</em>",
+    "s7-p1":"No puede costearse un accidente de campo. No puede perder su contrato a causa del incumplimiento de auditorías ESG.<br><br><strong style='color:var(--tp);'>FarmAgent automatiza permanentemente la inspección desde que la coa aterriza en la piña.</strong>"
+  }
+};
+
+function setLang(lang) {
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const k = el.dataset.i18n;
+    if(i18n[lang][k] !== undefined) el.innerHTML = i18n[lang][k];
+  });
+  document.getElementById('btn-en').className = lang === 'en' ? 'active' : 'inactive';
+  document.getElementById('btn-es').className = lang === 'es' ? 'active' : 'inactive';
+  document.documentElement.lang = lang;
+  localStorage.setItem('fa-deck-lang', lang);
+}
+
+// init
+const saved = localStorage.getItem('fa-deck-lang') || 'en';
+if(saved === 'es') setLang('es');
+
 </script>
 </body>
 </html>
